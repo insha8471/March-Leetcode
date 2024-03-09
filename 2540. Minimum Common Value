@@ -1,0 +1,56 @@
+Approach : Two Pointer
+Time complexity : O(n+m)
+Space complexity : O(1)
+
+class Solution {
+    public int getCommon(int[] nums1, int[] nums2) {
+        int i=0,j=0;
+
+        while(i < nums1.length && j < nums2.length){
+            if(nums1[i] < nums2[j]){
+                i++;
+            }else if(nums1[i] > nums2[j]){
+                j++;
+            }else{
+                return nums1[i];
+            }
+        }
+        return -1;
+    }
+}
+
+
+**********************************************************************************************************************************************
+Approach : Binary Search
+Time complexity : O(n log(m))
+Space complexity : O(1)
+
+
+class Solution {
+    public boolean binarySearch(int[] arr, int num){
+        int st = 0;
+        int end = arr.length-1;
+
+        while(st <= end){
+            int mid = st+(end-st)/2;
+            if(arr[mid] == num)
+                return true;
+            else if(arr[mid] > num)
+                end = mid-1;
+            else
+                st = mid+1;
+        }
+        return false;
+    }
+
+    public int getCommon(int[] nums1, int[] nums2) {
+        int n = nums1.length;
+        
+        for(int x : nums1){
+            if(binarySearch(nums2, x)){
+                return x;
+            }
+        }
+        return -1;
+    }
+}
