@@ -1,0 +1,42 @@
+Approach : Sorting + Binary Search
+Time complexity : O(n + nlogm)
+Space complexity : O(n)
+
+class Solution {
+    public boolean binarySearch(int[] arr, int num){
+        int st = 0;
+        int end = arr.length-1;
+
+        while(st <= end){
+            int mid = st + (end-st)/2;
+            if(arr[mid] == num){
+                return true;
+            }else if(arr[mid] > num){
+                end = mid-1;
+            }else{
+                st = mid+1;
+            }
+        }
+        return false;
+    }
+    public int[] intersection(int[] nums1, int[] nums2) {
+        if(nums1.length < nums2.length){
+            intersection(nums2,nums1);
+        }
+        Arrays.sort(nums2);
+        Set<Integer> st = new HashSet<>();
+
+        for(int num : nums1){
+            if(binarySearch(nums2, num)){
+                st.add(num);
+            }
+        }
+
+        int[] res = new int[st.size()];
+        int idx  = 0;
+        for(int x : st){
+            res[idx++] = x;
+        }
+        return res;
+    }
+}
