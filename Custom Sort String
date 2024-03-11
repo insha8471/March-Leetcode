@@ -1,0 +1,28 @@
+class Solution {
+    public String customSortString(String order, String s) {
+        Map<Character, Integer> mp = new HashMap<>();
+        for(char ch : s.toCharArray()){
+            mp.put(ch, mp.getOrDefault(ch,0)+1);
+        }
+        StringBuilder sb = new StringBuilder("");
+        for(char ch : order.toCharArray()){
+            if(mp.containsKey(ch)){
+                int freq = mp.get(ch);
+                while(freq > 0){
+                    sb.append(ch);
+                    freq--;
+                }
+                mp.remove(ch);
+            }
+        }
+        for(char ch : mp.keySet()){
+            int freq = mp.get(ch);
+            while(freq > 0){
+                sb.append(ch);
+                freq--;
+            }
+        }
+
+        return sb.toString();
+    }
+}
