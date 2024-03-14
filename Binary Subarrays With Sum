@@ -1,0 +1,22 @@
+Approach : Prefix Sum + HashMap
+
+Time complexity : O(n)
+Time complexity : O(n)
+
+class Solution {
+    public int numSubarraysWithSum(int[] nums, int goal) {
+        int pSum = 0;
+        Map<Integer, Integer> mp = new HashMap<>();
+
+        int subArraycnt = 0;
+        mp.put(0,1);
+        for(int i=0;i<nums.length;i++){
+            pSum += nums[i];
+
+            subArraycnt += mp.getOrDefault(pSum - goal, 0);
+            mp.put(pSum , mp.getOrDefault(pSum,0)+1);
+        }
+
+        return subArraycnt;
+    }
+}
