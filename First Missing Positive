@@ -1,3 +1,18 @@
+Approach :
+->  Initialize a boolean variable isOnePres to check if the number 1 is present in the array.
+->  Next, we iterate through the array:If we encounter 1, we set isOnePres to true.If the number
+    is less than or equal to 0, or greater than the length of the array, we set it to 1. This step
+    ensures that all numbers in the array are positive integers within the range [1, n].
+->  After preprocessing, we have ensured that 1 is present in the array. Now, we proceed
+    with marking the presence of other positive integers.
+->  We iterate through the array again and mark the presence of each positive integer by negating the value at its corresponding index
+->  Finally, we scan the array once more to find the first positive integer. If we find any positive
+    integer at index i, we return i+1. If no positive integer is found, the result is n+1, indicating
+    that all positive integers up to n are present, and the missing one is n+1.
+
+Time complexity : O(n)
+
+
 class Solution {
     public int firstMissingPositive(int[] nums) {
         int n = nums.length;
