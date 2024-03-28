@@ -1,0 +1,36 @@
+Approach : Sliding Window + map
+-> Initialize variable, i and j are pointers for the sliding window technique.
+-> iterate through the array using pointers i and j.
+-> At each step, we update the frequency of the current element in
+the hashmap.
+-> then check if the frequency of any element exceeds the given limit k,
+shrink the window, then update the frequency of elements and move the
+left pointer i until the condition is satisfied.
+-> update result with the maximum length of the subarray encountered so far.
+-> return the result
+
+Time complexity : O(n)
+Space complexity : O(n)
+
+class Solution {
+    public int maxSubarrayLength(int[] nums, int k) {
+        int n = nums.length;
+        HashMap<Integer, Integer> mp = new HashMap<>();
+        int result = 0;
+        int i=0;
+        int j=0;
+
+        while(j<n){
+            mp.put(nums[j], mp.getOrDefault(nums[j], 0)+1);
+
+            while(mp.get(nums[j]) > k){
+                mp.put(nums[i], mp.get(nums[i])-1);
+                i++;
+            }
+
+            result = Math.max(result, j-i+1);
+            j++;
+        }
+        return result;
+    }
+}
