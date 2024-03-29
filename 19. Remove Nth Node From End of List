@@ -1,4 +1,4 @@
-Approach : Two pointer(one pass)
+Approach : Two pointer(one pass solution)
 //Time complexity : O(n)
 //Space complexity : O(1)
 
