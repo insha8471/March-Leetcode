@@ -1,0 +1,30 @@
+Approach : Sliding Window
+Time complexity : O(n)
+Space compleixty : O(1)
+
+class Solution {
+    public  long countSubarrays(int[] nums, int minK, int maxK) {
+        int minIdx = -1;
+        int maxIdx = -1;
+        int culpritIdx = -1;
+        long result = 0;
+
+        for(int i=0;i<nums.length;i++){
+            if(nums[i] > maxK || nums[i] < minK){
+                culpritIdx = i;
+            }
+            if(nums[i] == minK){
+                minIdx = i;
+            }
+            if(nums[i] == maxK){
+                maxIdx = i;
+            }
+
+            int smaller = Math.min(minIdx, maxIdx);
+            int temp = smaller - culpritIdx;
+
+            result += (temp <= 0) ? 0 : temp;
+        }
+        return result;
+    }
+}
