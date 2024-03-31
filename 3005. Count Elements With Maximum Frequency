@@ -1,6 +1,6 @@
 //Approach : Frequecy count
 //Time complexity : O(n)
-//Space complexity : O(1) -> the size of the frequency array is fixed it doesn't grow with the input.
+//Space complexity : O(1) -> the size of the frequency array is fixed it doesn't grow with the input
 
 class Solution {
     public int maxFrequencyElements(int[] nums) {
